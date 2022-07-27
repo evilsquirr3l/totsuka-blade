@@ -1,0 +1,39 @@
+import pyganim
+from pygame import *
+import blocks
+
+ANIMATION = []
+ANIMATION_DELAY = 0.1
+
+settings = open("settings.ini")
+WIDTH = int(settings.readline())  # Ширина создаваемого окна
+HEIGHT = int(settings.readline())  # Высота
+settings.close()
+
+#for i in range (0,2):
+#    for j in range(0,10):
+#        for z in range(0,10):
+#            if(i*100+j*10+z>=172): break
+#            s='background/frame_' + str(i) +str(j) +str(z)+ '_delay-0.1s.png'
+#            ANIMATION.append((s))
+#for i in ANIMATION:
+#    print("'"+i+"'"+',')
+#print(ANIMATION)
+
+ANIMATION = ['background/frame_000_delay-0.1s.png', 'background/frame_001_delay-0.1s.png', 'background/frame_002_delay-0.1s.png', 'background/frame_003_delay-0.1s.png', 'background/frame_004_delay-0.1s.png', 'background/frame_005_delay-0.1s.png', 'background/frame_006_delay-0.1s.png', 'background/frame_007_delay-0.1s.png', 'background/frame_008_delay-0.1s.png', 'background/frame_009_delay-0.1s.png', 'background/frame_010_delay-0.1s.png', 'background/frame_011_delay-0.1s.png', 'background/frame_012_delay-0.1s.png', 'background/frame_013_delay-0.1s.png', 'background/frame_014_delay-0.1s.png', 'background/frame_015_delay-0.1s.png', 'background/frame_016_delay-0.1s.png', 'background/frame_017_delay-0.1s.png', 'background/frame_018_delay-0.1s.png', 'background/frame_019_delay-0.1s.png', 'background/frame_020_delay-0.1s.png', 'background/frame_021_delay-0.1s.png', 'background/frame_022_delay-0.1s.png', 'background/frame_023_delay-0.1s.png', 'background/frame_024_delay-0.1s.png', 'background/frame_025_delay-0.1s.png', 'background/frame_026_delay-0.1s.png', 'background/frame_027_delay-0.1s.png', 'background/frame_028_delay-0.1s.png', 'background/frame_029_delay-0.1s.png', 'background/frame_030_delay-0.1s.png', 'background/frame_031_delay-0.1s.png', 'background/frame_032_delay-0.1s.png', 'background/frame_033_delay-0.1s.png', 'background/frame_034_delay-0.1s.png', 'background/frame_035_delay-0.1s.png', 'background/frame_036_delay-0.1s.png', 'background/frame_037_delay-0.1s.png', 'background/frame_038_delay-0.1s.png', 'background/frame_039_delay-0.1s.png', 'background/frame_040_delay-0.1s.png', 'background/frame_041_delay-0.1s.png', 'background/frame_042_delay-0.1s.png', 'background/frame_043_delay-0.1s.png', 'background/frame_044_delay-0.1s.png', 'background/frame_045_delay-0.1s.png', 'background/frame_046_delay-0.1s.png', 'background/frame_047_delay-0.1s.png', 'background/frame_048_delay-0.1s.png', 'background/frame_049_delay-0.1s.png', 'background/frame_050_delay-0.1s.png', 'background/frame_051_delay-0.1s.png', 'background/frame_052_delay-0.1s.png', 'background/frame_053_delay-0.1s.png', 'background/frame_054_delay-0.1s.png', 'background/frame_055_delay-0.1s.png', 'background/frame_056_delay-0.1s.png', 'background/frame_057_delay-0.1s.png', 'background/frame_058_delay-0.1s.png', 'background/frame_059_delay-0.1s.png', 'background/frame_060_delay-0.1s.png', 'background/frame_061_delay-0.1s.png', 'background/frame_062_delay-0.1s.png', 'background/frame_063_delay-0.1s.png', 'background/frame_064_delay-0.1s.png', 'background/frame_065_delay-0.1s.png', 'background/frame_066_delay-0.1s.png', 'background/frame_067_delay-0.1s.png', 'background/frame_068_delay-0.1s.png', 'background/frame_069_delay-0.1s.png', 'background/frame_070_delay-0.1s.png', 'background/frame_071_delay-0.1s.png', 'background/frame_072_delay-0.1s.png', 'background/frame_073_delay-0.1s.png', 'background/frame_074_delay-0.1s.png', 'background/frame_075_delay-0.1s.png', 'background/frame_076_delay-0.1s.png', 'background/frame_077_delay-0.1s.png', 'background/frame_078_delay-0.1s.png', 'background/frame_079_delay-0.1s.png', 'background/frame_080_delay-0.1s.png', 'background/frame_081_delay-0.1s.png', 'background/frame_082_delay-0.1s.png', 'background/frame_083_delay-0.1s.png', 'background/frame_084_delay-0.1s.png', 'background/frame_085_delay-0.1s.png', 'background/frame_086_delay-0.1s.png', 'background/frame_087_delay-0.1s.png', 'background/frame_088_delay-0.1s.png', 'background/frame_089_delay-0.1s.png', 'background/frame_090_delay-0.1s.png', 'background/frame_091_delay-0.1s.png', 'background/frame_092_delay-0.1s.png', 'background/frame_093_delay-0.1s.png', 'background/frame_094_delay-0.1s.png', 'background/frame_095_delay-0.1s.png', 'background/frame_096_delay-0.1s.png', 'background/frame_097_delay-0.1s.png', 'background/frame_098_delay-0.1s.png', 'background/frame_099_delay-0.1s.png', 'background/frame_100_delay-0.1s.png', 'background/frame_101_delay-0.1s.png', 'background/frame_102_delay-0.1s.png', 'background/frame_103_delay-0.1s.png', 'background/frame_104_delay-0.1s.png', 'background/frame_105_delay-0.1s.png', 'background/frame_106_delay-0.1s.png', 'background/frame_107_delay-0.1s.png', 'background/frame_108_delay-0.1s.png', 'background/frame_109_delay-0.1s.png', 'background/frame_110_delay-0.1s.png', 'background/frame_111_delay-0.1s.png', 'background/frame_112_delay-0.1s.png', 'background/frame_113_delay-0.1s.png', 'background/frame_114_delay-0.1s.png', 'background/frame_115_delay-0.1s.png', 'background/frame_116_delay-0.1s.png', 'background/frame_117_delay-0.1s.png', 'background/frame_118_delay-0.1s.png', 'background/frame_119_delay-0.1s.png', 'background/frame_120_delay-0.1s.png', 'background/frame_121_delay-0.1s.png', 'background/frame_122_delay-0.1s.png', 'background/frame_123_delay-0.1s.png', 'background/frame_124_delay-0.1s.png', 'background/frame_125_delay-0.1s.png', 'background/frame_126_delay-0.1s.png', 'background/frame_127_delay-0.1s.png', 'background/frame_128_delay-0.1s.png', 'background/frame_129_delay-0.1s.png', 'background/frame_130_delay-0.1s.png', 'background/frame_131_delay-0.1s.png', 'background/frame_132_delay-0.1s.png', 'background/frame_133_delay-0.1s.png', 'background/frame_134_delay-0.1s.png', 'background/frame_135_delay-0.1s.png', 'background/frame_136_delay-0.1s.png', 'background/frame_137_delay-0.1s.png', 'background/frame_138_delay-0.1s.png', 'background/frame_139_delay-0.1s.png', 'background/frame_140_delay-0.1s.png', 'background/frame_141_delay-0.1s.png', 'background/frame_142_delay-0.1s.png', 'background/frame_143_delay-0.1s.png', 'background/frame_144_delay-0.1s.png', 'background/frame_145_delay-0.1s.png', 'background/frame_146_delay-0.1s.png', 'background/frame_147_delay-0.1s.png', 'background/frame_148_delay-0.1s.png', 'background/frame_149_delay-0.1s.png', 'background/frame_150_delay-0.1s.png', 'background/frame_151_delay-0.1s.png', 'background/frame_152_delay-0.1s.png', 'background/frame_153_delay-0.1s.png', 'background/frame_154_delay-0.1s.png', 'background/frame_155_delay-0.1s.png', 'background/frame_156_delay-0.1s.png', 'background/frame_157_delay-0.1s.png', 'background/frame_158_delay-0.1s.png', 'background/frame_159_delay-0.1s.png', 'background/frame_160_delay-0.1s.png', 'background/frame_161_delay-0.1s.png', 'background/frame_162_delay-0.1s.png', 'background/frame_163_delay-0.1s.png', 'background/frame_164_delay-0.1s.png', 'background/frame_165_delay-0.1s.png', 'background/frame_166_delay-0.1s.png', 'background/frame_167_delay-0.1s.png', 'background/frame_168_delay-0.1s.png', 'background/frame_169_delay-0.1s.png', 'background/frame_170_delay-0.1s.png', 'background/frame_171_delay-0.1s.png']
+
+class Background(sprite.Sprite):
+    def __init__(self, total_width, total_height):
+        sprite.Sprite.__init__(self)
+        self.rect = Rect(0, 0, total_width, total_height)
+        self.image = Surface((total_width, total_height))
+        boltAnim = []
+        for anim in ANIMATION:
+            frame = image.load(anim)
+            scaled_frame = transform.scale(frame, (total_width, total_height))
+            boltAnim.append((scaled_frame, ANIMATION_DELAY))
+        self.boltAnim = pyganim.PygAnimation(boltAnim)
+        self.boltAnim.play()
+
+    def update(self):
+        self.boltAnim.blit(self.image, (0, 0))
